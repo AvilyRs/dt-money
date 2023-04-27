@@ -1,5 +1,15 @@
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './styles/global';
+
+import { defaultTheme } from './styles/themes/default';
+
 export function App() {
   return (
-    <div>App</div>
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyles />
+      <div>
+        <h1>DT Money</h1>
+      </div>
+    </ThemeProvider>
   );
 }
