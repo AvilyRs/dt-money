@@ -1,4 +1,4 @@
-import { EntriesIcon, OutIcon, SummaryCard, SummaryContainer, TotalIcon } from './styles';
+import { IncomeIcon, OutcomeIcon, SummaryCard, SummaryContainer, TotalIcon } from './styles';
 
 export function Summary() {
   return (
@@ -6,14 +6,14 @@ export function Summary() {
       <SummaryCard>
         <header>
           <span>Entrada</span>
-          <EntriesIcon />
+          <IncomeIcon />
         </header>
         <strong>R$ 17.000,00</strong>
       </SummaryCard>
       <SummaryCard>
         <header>
           <span>Saídas</span>
-          <OutIcon />
+          <OutcomeIcon />
         </header>
         <strong>R$ 17.000,00</strong>
       </SummaryCard>

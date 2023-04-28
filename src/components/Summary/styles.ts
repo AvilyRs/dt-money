@@ -39,11 +39,11 @@ export const SummaryCard = styled.div<SummaryCardProps>`
   `}
 `;
 
-export const EntriesIcon = styled(ArrowCircleUp).attrs({ size: iconSize})`
+export const IncomeIcon = styled(ArrowCircleUp).attrs({ size: iconSize})`
   color: ${props => props.theme['green-500']};
 `;
 
-export const OutIcon = styled(ArrowCircleDown).attrs({ size: iconSize})`
+export const OutcomeIcon = styled(ArrowCircleDown).attrs({ size: iconSize})`
   color: ${props => props.theme['red-300']};
 `;
 
