@@ -14,6 +14,10 @@ export const GlobalStyles = createGlobalStyle`
     outline-color: ${props => props.theme['green-500']};
   }
 
+  :disabled {
+    cursor: not-allowed;
+  }
+
   body {
     color: ${props => props.theme['gray-100']};
     -webkit-font-smoothing: antialiased;
@@ -22,5 +26,13 @@ export const GlobalStyles = createGlobalStyle`
 
   body, button, input, textarea {
     font: 400 1rem 'Roboto', sans-serif;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  @media (max-width: 1020px) {
+    font-size: 87.5%;
   }
 `;
