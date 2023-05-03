@@ -12,7 +12,6 @@ export const SummaryContainer = styled.section`
 
   width: min(100%, 1120px);
   margin: -5rem auto 0;
-  padding: 0 1.5rem;
 `;
 
 export const SummaryCard = styled.div<SummaryCardProps>`
