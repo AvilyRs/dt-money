@@ -1,25 +1,12 @@
-import { useEffect, useState } from 'react';
-
 import { Header } from '../../components/Header';
 import { Summary } from '../../components/Summary';
+import { useTransactions } from '../../contexts/TransactionsContext';
 import { SearchForm } from './components/SearchForm';
 
 import { PriceHighlight, TransactionsContainer, TransactionsTable } from './styles';
-import { Transaction } from './interface';
 
 export function Transactions() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  async function loadTransactions() {
-    fetch('http://localhost:3004/transactions')
-      .then(response => response.json())
-      .then(data => {
-        setTransactions(data);
-      });
-  }
-  useEffect(() => {
-    loadTransactions();
-  }, []);
+  const { transactions } = useTransactions();
 
   return (
     <div>
