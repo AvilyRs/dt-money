@@ -1,6 +1,6 @@
 import { Header } from '../../components/Header';
 import { Summary } from '../../components/Summary';
-import { useTransactions } from '../../contexts/TransactionsContext';
+import { useTransactions } from '../../hooks/useTransactions';
 import { priceFormatter } from '../../utils/formatter';
 import { SearchForm } from './components/SearchForm';
 

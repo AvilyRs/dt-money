@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 import { Transaction, TransactionContextType, TransctionsContextProviderProps } from './interface';
 
@@ -23,15 +23,4 @@ export function TransactionsContextProvider({ children }: TransctionsContextProv
       {children}
     </TransactionsContext.Provider>
   );
-}
-
-export function useTransactions() {
-  const context = useContext(TransactionsContext);
-  const isContextInvalid = Object.keys(context).length === 0;
-
-  if (isContextInvalid) {
-    throw new Error('useTransactions should be use within a TransactionsContextProvider');
-  }
-
-  return context;
 }

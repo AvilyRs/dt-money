@@ -1,27 +1,9 @@
-import { useTransactions } from '../../contexts/TransactionsContext';
+import { useSummary } from '../../hooks/useSummary';
 import { priceFormatter } from '../../utils/formatter';
 import { IncomeIcon, OutcomeIcon, SummaryCard, SummaryContainer, TotalIcon } from './styles';
 
 export function Summary() {
-  const { transactions } = useTransactions();
-
-  const summary = transactions.reduce((acc, transaction) => {
-    switch (transaction.type) {
-    case 'income':
-      acc.income += transaction.price;
-      acc.total += transaction.price;
-      break;
-    case 'outcome':
-      acc.outcome += transaction.price;
-      acc.total -= transaction.price;
-      break;
-    }
-    return acc;
-  }, {
-    income: 0,
-    outcome: 0,
-    total: 0
-  });
+  const { income, outcome, total } = useSummary();
 
   return (
     <SummaryContainer>
@@ -30,21 +12,21 @@ export function Summary() {
           <span>Entrada</span>
           <IncomeIcon />
         </header>
-        <strong>{priceFormatter.format(summary.income)}</strong>
+        <strong>{priceFormatter.format(income)}</strong>
       </SummaryCard>
       <SummaryCard>
         <header>
           <span>Saídas</span>
           <OutcomeIcon />
         </header>
-        <strong>{priceFormatter.format(summary.outcome)}</strong>
+        <strong>{priceFormatter.format(outcome)}</strong>
       </SummaryCard>
       <SummaryCard variant='green'>
         <header>
           <span>Total</span>
           <TotalIcon />
         </header>
-        <strong>{priceFormatter.format(summary.total)}</strong>
+        <strong>{priceFormatter.format(total)}</strong>
       </SummaryCard>
     </SummaryContainer>
   );
