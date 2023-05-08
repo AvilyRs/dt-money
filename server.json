@@ -5,7 +5,7 @@
       "description": "Desenvolvimento de site",
       "type": "income",
       "category": "Venda",
-      "price": 14000,
+      "price": 1000,
       "createdAt": "2023-05-04T18:46:06.761Z"
     },
     {
@@ -13,7 +13,7 @@
       "description": "Pastel",
       "type": "outcome",
       "category": "Alimentação",
-      "price": 7.5,
+      "price": 500,
       "createdAt": "2023-05-04T17:46:06.761Z"
     }
   ]
