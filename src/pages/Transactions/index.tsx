@@ -1,4 +1,5 @@
 import { Header } from '../../components/Header';
+import { LoaderIndicator } from '../../components/LoaderIndicator';
 import { Summary } from '../../components/Summary';
 import { useTransactions } from '../../hooks/useTransactions';
 import { priceFormatter } from '../../utils/formatter';
@@ -7,7 +8,7 @@ import { SearchForm } from './components/SearchForm';
 import { PriceHighlight, TransactionsContainer, TransactionsTable } from './styles';
 
 export function Transactions() {
-  const { transactions } = useTransactions();
+  const { transactions, isLoading } = useTransactions();
 
   return (
     <div>
@@ -16,6 +17,7 @@ export function Transactions() {
 
       <TransactionsContainer>
         <SearchForm />
+        {isLoading && <LoaderIndicator />}
         <TransactionsTable>
           <tbody>
             {transactions?.map(transaction => (

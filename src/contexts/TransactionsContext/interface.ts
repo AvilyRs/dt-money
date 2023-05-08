@@ -11,6 +11,7 @@ export interface Transaction {
 
 export interface TransactionContextType {
   transactions: Transaction[];
+  isLoading: boolean;
 }
 
 export interface TransctionsContextProviderProps {
