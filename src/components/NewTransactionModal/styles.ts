@@ -64,7 +64,7 @@ export const Content = styled(Dialog.Content)`
       font-weight: bold;
       background: ${props => props.theme['green-500']};
 
-      &:hover {
+      &:not(:disabled):hover {
         background: ${props => props.theme['green-700']};
         transition: background-color 0.2s;
       }
