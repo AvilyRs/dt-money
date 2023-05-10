@@ -3,27 +3,34 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
 
-import { CloseButton, Content, Overlay, TransactionType, TransactionTypeButton } from './styles';
+import { useTransactions } from '../../hooks/useTransactions';
 import { NewTransactionFormType } from './interface';
+
+import { CloseButton, Content, Overlay, TransactionType, TransactionTypeButton } from './styles';
 
 export function NewTransactionModal() {
   const closeIconSize = '1.5rem';
   const transactionTypeButtonIconSize = '1.5rem';
 
+  const { createNewTransaction } = useTransactions();
+
   const {
     control,
     register,
     handleSubmit,
-    formState: { isSubmitting }
+    formState: { isSubmitting },
+    reset
   } = useForm<NewTransactionFormType>({
     defaultValues: {
       type: 'income'
     }
   });
 
-  async function handleSubmitNewTransaction(data: NewTransactionFormType) {
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log(data);
+  async function handleCreateNewTransaction(data: NewTransactionFormType) {
+    await createNewTransaction(data)
+      .finally(() => {
+        reset();
+      });
   }
 
   return (
@@ -35,7 +42,7 @@ export function NewTransactionModal() {
           <X size={closeIconSize} />
         </CloseButton>
 
-        <form onSubmit={handleSubmit(handleSubmitNewTransaction)}>
+        <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
           <input
             type='text'
             placeholder='Descrição'

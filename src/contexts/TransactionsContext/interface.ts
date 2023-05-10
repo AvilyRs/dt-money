@@ -9,10 +9,18 @@ export interface Transaction {
   createdAt: string;
 }
 
+export interface CreateNewTransaction {
+  description: string;
+  type: 'income' | 'outcome';
+  category: string;
+  price: number;
+}
+
 export interface TransactionContextType {
   transactions: Transaction[];
   isLoading: boolean;
   fetchTransactions: (query?: string) => Promise<void>;
+  createNewTransaction: (data: CreateNewTransaction) => Promise<void>;
 }
 
 export interface TransctionsContextProviderProps {
