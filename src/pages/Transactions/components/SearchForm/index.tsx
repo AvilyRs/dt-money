@@ -1,9 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { SearchFormContainer, SearchIcon } from './styles';
 import { SearchFormType } from './interface';
 import { searchFormSchema } from './schemas';
+import { useTransactions } from '../../../../hooks/useTransactions';
+
+import { SearchFormContainer, SearchIcon } from './styles';
 
 export function SearchForm() {
   const {
@@ -14,9 +16,10 @@ export function SearchForm() {
     resolver: zodResolver(searchFormSchema)
   });
 
+  const { fetchTransactions } = useTransactions();
+
   async function handleSearchTransactions(data: SearchFormType) {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log(data.query);
+    await fetchTransactions(data.query);
   }
 
   return (

@@ -12,6 +12,7 @@ export interface Transaction {
 export interface TransactionContextType {
   transactions: Transaction[];
   isLoading: boolean;
+  fetchTransactions: (query?: string) => Promise<void>;
 }
 
 export interface TransctionsContextProviderProps {
