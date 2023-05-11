@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { createContext } from 'use-context-selector';
 
 import { CreateNewTransaction, Transaction, TransactionContextType, TransctionsContextProviderProps } from './interface';
 import { api } from '../../lib/axios';

@@ -1,14 +1,22 @@
+import { useContextSelector } from 'use-context-selector';
 import { Header } from '../../components/Header';
 import { Summary } from '../../components/Summary';
-import { useTransactions } from '../../hooks/useTransactions';
 import { dateFormatter, priceFormatter } from '../../utils/formatter';
 import { SearchForm } from './components/SearchForm';
 import { TableSkeleton } from './components/Skeleton';
+import { TransactionsContext } from '../../contexts/TransactionsContext';
 
 import { PriceHighlight, TransactionsContainer, TransactionsTable } from './styles';
 
 export function Transactions() {
-  const { transactions, isLoading } = useTransactions();
+  const { transactions, isLoading } = useContextSelector(TransactionsContext, context => {
+    const { transactions, isLoading } = context;
+
+    return {
+      transactions,
+      isLoading
+    };
+  });
 
   return (
     <div>

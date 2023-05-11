@@ -1,10 +1,11 @@
+import { useContextSelector } from 'use-context-selector';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Controller, useForm } from 'react-hook-form';
 
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
 
-import { useTransactions } from '../../hooks/useTransactions';
 import { NewTransactionFormType } from './interface';
+import { TransactionsContext } from '../../contexts/TransactionsContext';
 
 import { CloseButton, Content, Overlay, TransactionType, TransactionTypeButton } from './styles';
 
@@ -12,7 +13,9 @@ export function NewTransactionModal() {
   const closeIconSize = '1.5rem';
   const transactionTypeButtonIconSize = '1.5rem';
 
-  const { createNewTransaction } = useTransactions();
+  const createNewTransaction = useContextSelector(TransactionsContext, context => {
+    return context.createNewTransaction;
+  });
 
   const {
     control,

@@ -1,13 +1,18 @@
+import { useContextSelector } from 'use-context-selector';
+
+import { TransactionsContext } from '../../contexts/TransactionsContext';
 import { useSummary } from '../../hooks/useSummary';
-import { useTransactions } from '../../hooks/useTransactions';
 import { priceFormatter } from '../../utils/formatter';
 import { Skeleton } from '../Skeleton';
+
 import { IncomeIcon, OutcomeIcon, SummaryCard, SummaryContainer, TotalIcon } from './styles';
 
 export function Summary() {
   const { income, outcome, total } = useSummary();
 
-  const { isLoading } = useTransactions();
+  const isLoading = useContextSelector(TransactionsContext, context => {
+    return context.isLoading;
+  });
 
   return (
     <SummaryContainer>
