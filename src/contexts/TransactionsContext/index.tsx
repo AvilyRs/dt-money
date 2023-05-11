@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createContext } from 'use-context-selector';
 
 import { CreateNewTransaction, Transaction, TransactionContextType, TransctionsContextProviderProps } from './interface';
@@ -10,7 +10,7 @@ export function TransactionsContextProvider({ children }: TransctionsContextProv
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  async function fetchTransactions(query?: string) {
+  const fetchTransactions = useCallback(async (query?: string) => {
     setIsLoading(true);
     const response = await api.get('transactions', {
       params: {
@@ -21,9 +21,9 @@ export function TransactionsContextProvider({ children }: TransctionsContextProv
     });
 
     setTransactions(response.data);
-  }
+  }, []);
 
-  async function createNewTransaction(data: CreateNewTransaction) {
+  const createNewTransaction = useCallback(async (data: CreateNewTransaction) => {
     const { description, category, price, type } = data;
 
     const response = await api.post('transactions', {
@@ -35,11 +35,11 @@ export function TransactionsContextProvider({ children }: TransctionsContextProv
     });
 
     setTransactions(state => [response.data, ...state]);
-  }
+  }, []);
 
   useEffect(() => {
     fetchTransactions();
-  }, []);
+  }, [fetchTransactions]);
 
   return (
     <TransactionsContext.Provider value={{
