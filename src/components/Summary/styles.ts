@@ -12,6 +12,12 @@ export const SummaryContainer = styled.section`
 
   width: min(100%, 1120px);
   margin: -5rem auto 0;
+
+  overflow-x: auto;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(3, 350px);
+  }
 `;
 
 export const SummaryCard = styled.div<SummaryCardProps>`

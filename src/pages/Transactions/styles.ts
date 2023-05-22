@@ -34,3 +34,7 @@ export const TransactionsTable = styled.table`
     }
   }
 `;
+
+export const Padder = styled.div`
+  padding: 0 1.5rem;
+`;
